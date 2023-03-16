@@ -11,6 +11,7 @@ app.use(logger_middleware)
 app.use('/candidates', candidates_routes)
 app.use('/ping_pong', ping_routes)
 
+
 async function main() {
     await connect()
     app.listen(12345, () => console.log('My App is listening on port 12345.'));
