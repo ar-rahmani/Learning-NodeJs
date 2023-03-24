@@ -4,6 +4,7 @@ const ping_routes = require('./routes/ping_pong_routes')
 const logger_middleware = require('./middleware/loggerMiddleware')
 const { connect } = require('./mongo')
 
+
 const app = express();
 app.use(express.json());
 app.use(logger_middleware)
