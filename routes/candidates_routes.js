@@ -13,6 +13,15 @@ c_router
         next()
     }) 
     
+    .get('/:candidateId', async function(req, res, next) {
+        const collection = database.db.collection("candidate")
+        const o_id  = req.params.candidateId
+        const item = await collection.findOne({candidateId : o_id })
+        console.log(item)
+        res.send(item)
+        next()
+    })
+
     .post('/:candidateId', async function (req, res, next) {  
         const collection = database.db.collection("candidate")
         const rest = await collection.insertOne(req.body);
