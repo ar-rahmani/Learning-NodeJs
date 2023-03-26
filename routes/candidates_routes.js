@@ -22,6 +22,22 @@ c_router
         next()
     })
 
+    .post('/update', async function (req, res, next) {  
+        const collection = database.db.collection("candidate")
+        const fname = req.body.candidate_firstname
+        const cid = req.body.candidateId
+        console.log('fname is :' , fname)
+        console.log('cid is :',cid )
+        try {
+            collection.updateOne({ "candidate_firstname": fname }, { $set: { "candidateId": cid } });
+            res.send('updated')
+        }
+        catch (e) {
+            print(e)
+        }
+        next()
+    })
+
     .post('/:candidateId', async function (req, res, next) {  
         const collection = database.db.collection("candidate")
         const rest = await collection.insertOne(req.body);
