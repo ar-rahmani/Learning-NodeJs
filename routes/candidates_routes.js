@@ -17,16 +17,17 @@ c_router
         const collection = database.db.collection("candidate")
         const o_id  = req.params.candidateId
         const item = await collection.findOne({ candidateId: o_id })
-        // if (item) {
-        //     console.log(item)
-        //     res.send(item)   
-        // }
-        // else {
-        //     console.log('Not found')
-        //     res.status(404).send('Not found')
-        // }
-        return (item) ? res.send(item) : res.status(404).send('Not found')
-                
+        return (item) ? res.send(item) : res.status(404).send('Not found') 
+        next()
+    })
+
+     .post('/update', async function (req, res, next) {  
+        const collection = database.db.collection("candidate")
+        const fname = req.body.candidate_firstname
+        const cid = req.body.candidateId
+        const item = await collection.findOne({ candidate_firstname: fname })
+        if (item) collection.updateOne({ "candidate_firstname": fname }, { $set: { "candidateId": cid } });
+        else  res.status(404).send('Notfound') 
         next()
     })
 
