@@ -20,7 +20,8 @@
     "dependencies": {
         "body-parser": "^1.20.2",
         "express": "^4.17.1",
-        "mongodb": "^5.1.0"
+        "mongoose": "^7.0.3",
+        "sanitize-html": "^2.10.0"
     },
     "devDependencies": {
         "nodemon": "^2.0.21"
