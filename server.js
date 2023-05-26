@@ -2,7 +2,8 @@ const express = require('express');
 const candidates_routes = require('./routes/candidates_routes')
 const ping_routes = require('./routes/ping_pong_routes')
 const logger_middleware = require('./middleware/loggerMiddleware')
-const {m_connect} =require ('./mongoose')
+const {m_connect} =require ('./mongoose');
+const { default: mongoose } = require('mongoose');
 
 
 const app = express();
@@ -13,6 +14,7 @@ app.use('/ping_pong', ping_routes)
 
 async function main() {
     await m_connect()
+    console.log(mongoose.connection.readyState);
     app.listen(12345, () => console.log('My App is listening on port 12345.'));
 
 }

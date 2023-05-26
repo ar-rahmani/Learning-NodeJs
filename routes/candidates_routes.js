@@ -19,6 +19,7 @@ c_router
         const item = await candidateModel.findById({ _id: req.params.candidateId })
         console.log(item)
         if (item) {
+            //console.log ("yes")
             res.send(item)
         }
         else { //inja error dare vaghti item ro peida nemikone
@@ -35,6 +36,7 @@ c_router
             { new : true },
             )   
             res.send(doc)
+            console.log("done")
         }
         catch (error) {
             res.status(500).json({ message : err.message })
